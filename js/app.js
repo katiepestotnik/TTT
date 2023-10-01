@@ -68,7 +68,6 @@ const selectBox = (e) => {
     const className = box.classList[1]
     if (firstCount <= secondCount || firstCount === 0 ) {
         box.textContent = firstPlayer
-        box.classList.add(firstPlayer)
         firstCount++
         checkWin1(className, win1, firstPlayer)
         checkWin2(className, win2, firstPlayer)
@@ -81,7 +80,6 @@ const selectBox = (e) => {
     } 
     else {
         box.textContent = secondPlayer
-        box.classList.add(secondPlayer)
         secondCount++
         checkWin1(className, win1, secondPlayer)
         checkWin2(className, win2, secondPlayer)
@@ -89,8 +87,8 @@ const selectBox = (e) => {
         checkWin4(className, win4, secondPlayer)
         checkWin5(className, win5, secondPlayer)
         checkWin6(className, win6, secondPlayer)
-        checkWin7(className, win5, firstPlayer)
-        checkWin8(className, win6, firstPlayer)
+        checkWin7(className, win7, firstPlayer)
+        checkWin8(className, win8, firstPlayer)
     } 
 }
 
@@ -101,8 +99,8 @@ const winnerCheckX = (e) => {
     const answer4 = win4.every((ele) => ele === firstPlayer)
     const answer5 = win5.every((ele) => ele === firstPlayer)
     const answer6 = win6.every((ele) => ele === firstPlayer)
-    const answer7 = win5.every((ele) => ele === firstPlayer)
-    const answer8 = win6.every((ele) => ele === firstPlayer)
+    const answer7 = win7.every((ele) => ele === firstPlayer)
+    const answer8 = win8.every((ele) => ele === firstPlayer)
     if (answer1 || answer2 || answer3 || answer4 || answer5 || answer6 || answer7 || answer8) {
         winner.textContent = 'Player 1: X'
         boxes.forEach((box) => {
@@ -117,8 +115,8 @@ const winnerCheckO = (e) => {
     const answer4 = win4.every((ele) => ele === secondPlayer)
     const answer5 = win5.every((ele) => ele === secondPlayer)
     const answer6 = win6.every((ele) => ele === secondPlayer)
-    const answer7 = win5.every((ele) => ele === firstPlayer)
-    const answer8 = win6.every((ele) => ele === firstPlayer)
+    const answer7 = win7.every((ele) => ele === firstPlayer)
+    const answer8 = win8.every((ele) => ele === firstPlayer)
     if (answer1 || answer2 || answer3 || answer4 || answer5 || answer6 || answer7 || answer8) {
         winner.textContent = 'Player 2: O'
         boxes.forEach((box) => {
