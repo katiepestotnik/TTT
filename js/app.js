@@ -21,7 +21,7 @@ const win4 = [2, 5, 8]
 const win5 = [3, 6, 9]
 const win6 = [1, 5, 9]
 const win7 = [7, 5, 3]
-const win8 = [7, 6, 9]
+const win8 = [7, 8, 9]
 
 const checkWin1 = (className, winArr, player) => {
     if (className === 'one') winArr.splice(0, 1, player)
@@ -60,7 +60,7 @@ const checkWin7 = (className, winArr, player) => {
 }
 const checkWin8 = (className, winArr, player) => {
     if (className === 'seven') winArr.splice(0, 1, player)
-    if (className === 'six') winArr.splice(1, 1, player)
+    if (className === 'eight') winArr.splice(1, 1, player)
     if (className === 'nine') winArr.splice(2, 1, player)
 }
 const selectBox = (e) => {
