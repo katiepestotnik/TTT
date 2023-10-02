@@ -92,8 +92,8 @@ const selectBox = (e) => {
         checkWin4(className, win4, secondPlayer)
         checkWin5(className, win5, secondPlayer)
         checkWin6(className, win6, secondPlayer)
-        checkWin7(className, win7, firstPlayer)
-        checkWin8(className, win8, firstPlayer)
+        checkWin7(className, win7, secondPlayer)
+        checkWin8(className, win8, secondPlayer)
         box.removeEventListener('click', selectBox)
     } 
 }
