@@ -121,8 +121,8 @@ const winnerCheckO = (e) => {
     const answer4 = win4.every((ele) => ele === secondPlayer)
     const answer5 = win5.every((ele) => ele === secondPlayer)
     const answer6 = win6.every((ele) => ele === secondPlayer)
-    const answer7 = win7.every((ele) => ele === firstPlayer)
-    const answer8 = win8.every((ele) => ele === firstPlayer)
+    const answer7 = win7.every((ele) => ele === secondPlayer)
+    const answer8 = win8.every((ele) => ele === secondPlayer)
     if (answer1 || answer2 || answer3 || answer4 || answer5 || answer6 || answer7 || answer8) {
         winner.textContent = 'Player 2: O'
         boxes.forEach((box) => {
