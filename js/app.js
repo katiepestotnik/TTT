@@ -1,5 +1,5 @@
-const firstPlayer = 'X'
-const secondPlayer = 'O'
+const firstPlayer = prompt('Enter a name to be player X')
+const secondPlayer = prompt('Enter a name to be player O')
 let firstCount = 0
 let secondCount = 0
 let currentPlayer = firstPlayer
@@ -73,7 +73,7 @@ const selectBox = (e) => {
     if (current.textContent === firstPlayer) current.textContent = secondPlayer
     else current.textContent = firstPlayer
     if (firstCount <= secondCount || firstCount === 0) {
-        box.textContent = firstPlayer
+        box.textContent = 'X'
         firstCount++
         checkWin1(className, win1, firstPlayer)
         checkWin2(className, win2, firstPlayer)
@@ -86,7 +86,7 @@ const selectBox = (e) => {
         box.removeEventListener('click', selectBox)
     } 
     else {
-        box.textContent = secondPlayer
+        box.textContent = 'O'
         secondCount++
         checkWin1(className, win1, secondPlayer)
         checkWin2(className, win2, secondPlayer)
@@ -111,7 +111,7 @@ const winnerCheckX = (e) => {
     const answer8 = win8.every((ele) => ele === firstPlayer)
     if (answer1 || answer2 || answer3 || answer4 || answer5 || answer6 || answer7 || answer8) {
         status.textContent = 'GAME OVER'
-        winner.textContent = 'Player 1: X'
+        winner.textContent = `${firstPlayer} wins!`
         boxes.forEach((box) => {
             box.removeEventListener('click', selectBox)
         })
@@ -128,7 +128,7 @@ const winnerCheckO = (e) => {
     const answer8 = win8.every((ele) => ele === secondPlayer)
     if (answer1 || answer2 || answer3 || answer4 || answer5 || answer6 || answer7 || answer8) {
         status.textContent = 'GAME OVER'
-        winner.textContent = 'Player 2: O'
+        winner.textContent = `${secondPlayer} wins!`
         boxes.forEach((box) => {
             box.removeEventListener('click', selectBox)
         })
