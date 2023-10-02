@@ -125,13 +125,15 @@ const winnerCheckO = (e) => {
 }
 
 const resetter = (e) => {
-    winner.textContent = ''
-    firstCount = 0
-    secondCount = 0
-    boxes.forEach((box) => {
-        box.textContent = ''
+    location.reload()
+    //below buggy, clears content but doesn't keep track of winner, uses old record
+    // winner.textContent = ''
+    // firstCount = 0
+    // secondCount = 0
+    // boxes.forEach((box) => {
+    //     box.textContent = ''
 
-    })
+    // })
 }
 
 boxes.forEach((box) => {
