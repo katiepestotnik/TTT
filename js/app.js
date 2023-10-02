@@ -6,6 +6,7 @@ let currentPlayer = firstPlayer
 const boxes = document.querySelectorAll('.box')
 const winner = document.querySelector('.winner')
 const reset = document.querySelector('.reset')
+const status = document.querySelector('.status')
 const current = document.querySelector('.current-player')
 current.textContent = currentPlayer
 //win 1,2,3
@@ -109,6 +110,7 @@ const winnerCheckX = (e) => {
     const answer7 = win7.every((ele) => ele === firstPlayer)
     const answer8 = win8.every((ele) => ele === firstPlayer)
     if (answer1 || answer2 || answer3 || answer4 || answer5 || answer6 || answer7 || answer8) {
+        status.textContent = 'GAME OVER'
         winner.textContent = 'Player 1: X'
         boxes.forEach((box) => {
             box.removeEventListener('click', selectBox)
@@ -125,6 +127,7 @@ const winnerCheckO = (e) => {
     const answer7 = win7.every((ele) => ele === secondPlayer)
     const answer8 = win8.every((ele) => ele === secondPlayer)
     if (answer1 || answer2 || answer3 || answer4 || answer5 || answer6 || answer7 || answer8) {
+        status.textContent = 'GAME OVER'
         winner.textContent = 'Player 2: O'
         boxes.forEach((box) => {
             box.removeEventListener('click', selectBox)
