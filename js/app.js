@@ -1,10 +1,10 @@
-console.log('connected')
 const firstPlayer = 'X'
 const secondPlayer = 'O'
 let firstCount = 0
 let secondCount = 0
 const boxes = document.querySelectorAll('.box')
 const winner = document.querySelector('.winner')
+let reset = document.querySelector('.reset')
 //win 1,2,3
 //1,4,7
 //4,5,6
@@ -13,7 +13,6 @@ const winner = document.querySelector('.winner')
 //1,5,9
 //7,5,3
 //7,6,9
-
 const win1 = [1, 2, 3]
 const win2 = [1, 4, 7]
 const win3 = [4, 5, 6]
@@ -125,9 +124,20 @@ const winnerCheckO = (e) => {
     }
 }
 
+const resetter = (e) => {
+    winner.textContent = ''
+    firstCount = 0
+    secondCount = 0
+    boxes.forEach((box) => {
+        box.textContent = ''
+
+    })
+}
+
 boxes.forEach((box) => {
     box.addEventListener('click', selectBox) 
     box.addEventListener('click', winnerCheckO)
     box.addEventListener('click', winnerCheckX)
 })
 
+reset.addEventListener('click', resetter)
