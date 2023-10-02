@@ -1,14 +1,35 @@
-const firstPlayer = prompt('Enter a name to be player X')
-const secondPlayer = prompt('Enter a name to be player O')
+const inputFirstPlayer = document.querySelector('.input-x')
+const inputSecondPlayer = document.querySelector('.input-o')
+const displayFirstPlayer = document.querySelector('.display-p1')
+const displaySecondPlayer = document.querySelector('.display-p2')
+let firstPlayer
+let secondPlayer
+const nameBtn1 = document.querySelector('.name-btn-1')
+const nameBtn2 = document.querySelector('.name-btn-2')
 let firstCount = 0
 let secondCount = 0
-let currentPlayer = firstPlayer
 const boxes = document.querySelectorAll('.box')
 const winner = document.querySelector('.winner')
 const reset = document.querySelector('.reset')
 const status = document.querySelector('.status')
 const current = document.querySelector('.current-player')
-current.textContent = currentPlayer
+
+
+const selectPlayer1 = (e) => {
+    firstPlayer = inputFirstPlayer.value
+    displayFirstPlayer.textContent = `${firstPlayer} is player X`
+    inputFirstPlayer.value = ''
+    nameBtn1.disabled = true
+    current.textContent = firstPlayer
+}
+const selectPlayer2 = (e) => {
+    secondPlayer = inputSecondPlayer.value
+    displaySecondPlayer.textContent = `${secondPlayer} is player O`
+    inputSecondPlayer.value = ''
+    nameBtn2.disabled = true
+}
+nameBtn1.addEventListener('click', selectPlayer1)
+nameBtn2.addEventListener('click', selectPlayer2)
 //win 1,2,3
 //1,4,7
 //4,5,6
@@ -111,6 +132,8 @@ const winnerCheckX = (e) => {
     const answer8 = win8.every((ele) => ele === firstPlayer)
     if (answer1 || answer2 || answer3 || answer4 || answer5 || answer6 || answer7 || answer8) {
         status.textContent = 'GAME OVER'
+        displayFirstPlayer.textContent = ''
+        displaySecondPlayer.textContent = ''
         winner.textContent = `${firstPlayer} wins!`
         boxes.forEach((box) => {
             box.removeEventListener('click', selectBox)
@@ -128,6 +151,8 @@ const winnerCheckO = (e) => {
     const answer8 = win8.every((ele) => ele === secondPlayer)
     if (answer1 || answer2 || answer3 || answer4 || answer5 || answer6 || answer7 || answer8) {
         status.textContent = 'GAME OVER'
+        displayFirstPlayer.textContent = ''
+        displaySecondPlayer.textContent = ''
         winner.textContent = `${secondPlayer} wins!`
         boxes.forEach((box) => {
             box.removeEventListener('click', selectBox)
