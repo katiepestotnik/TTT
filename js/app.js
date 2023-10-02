@@ -68,6 +68,7 @@ const checkWin8 = (className, winArr, player) => {
 const selectBox = (e) => {
     const box = e.target
     const className = box.classList[1]
+    box.style.backgroundColor = '#fff'
     if (current.textContent === firstPlayer) current.textContent = secondPlayer
     else current.textContent = firstPlayer
     if (firstCount <= secondCount || firstCount === 0) {
