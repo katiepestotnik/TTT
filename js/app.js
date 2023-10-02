@@ -2,9 +2,12 @@ const firstPlayer = 'X'
 const secondPlayer = 'O'
 let firstCount = 0
 let secondCount = 0
+let currentPlayer = firstPlayer
 const boxes = document.querySelectorAll('.box')
 const winner = document.querySelector('.winner')
-let reset = document.querySelector('.reset')
+const reset = document.querySelector('.reset')
+const current = document.querySelector('.current-player')
+current.textContent = currentPlayer
 //win 1,2,3
 //1,4,7
 //4,5,6
@@ -65,7 +68,9 @@ const checkWin8 = (className, winArr, player) => {
 const selectBox = (e) => {
     const box = e.target
     const className = box.classList[1]
-    if (firstCount <= secondCount || firstCount === 0 ) {
+    if (current.textContent === firstPlayer) current.textContent = secondPlayer
+    else current.textContent = firstPlayer
+    if (firstCount <= secondCount || firstCount === 0) {
         box.textContent = firstPlayer
         firstCount++
         checkWin1(className, win1, firstPlayer)
@@ -74,8 +79,9 @@ const selectBox = (e) => {
         checkWin4(className, win4, firstPlayer)
         checkWin5(className, win5, firstPlayer)
         checkWin6(className, win6, firstPlayer)
-        checkWin7(className, win5, firstPlayer)
-        checkWin8(className, win6, firstPlayer)
+        checkWin7(className, win7, firstPlayer)
+        checkWin8(className, win8, firstPlayer)
+        box.removeEventListener('click', selectBox)
     } 
     else {
         box.textContent = secondPlayer
@@ -88,6 +94,7 @@ const selectBox = (e) => {
         checkWin6(className, win6, secondPlayer)
         checkWin7(className, win7, firstPlayer)
         checkWin8(className, win8, firstPlayer)
+        box.removeEventListener('click', selectBox)
     } 
 }
 
@@ -126,14 +133,6 @@ const winnerCheckO = (e) => {
 
 const resetter = (e) => {
     location.reload()
-    //below buggy, clears content but doesn't keep track of winner, uses old record
-    // winner.textContent = ''
-    // firstCount = 0
-    // secondCount = 0
-    // boxes.forEach((box) => {
-    //     box.textContent = ''
-
-    // })
 }
 
 boxes.forEach((box) => {

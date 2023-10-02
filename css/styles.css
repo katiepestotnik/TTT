@@ -49,3 +49,11 @@
 .nine {
     grid-area: nine;
 }
+
+.reset{
+    background-color: blue;
+    margin: 10px;
+    color: white;
+    padding: 5px;
+    font-size: medium;
+}
