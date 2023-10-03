@@ -1,5 +1,6 @@
 const inputFirstPlayer = document.querySelector('.input-x')
 const inputSecondPlayer = document.querySelector('.input-o')
+const inputContainer = document.querySelector('.input-container')
 const displayFirstPlayer = document.querySelector('.display-p1')
 const displaySecondPlayer = document.querySelector('.display-p2')
 let firstPlayer
@@ -15,10 +16,12 @@ const winner = document.querySelector('.winner')
 const reset = document.querySelector('.reset')
 const status = document.querySelector('.status')
 const current = document.querySelector('.current-player')
-
+const imgDiv = document.querySelector('.img-div')
 
 const selectPlayer1 = (e) => {
+    e.preventDefault()
     firstPlayer = inputFirstPlayer.value
+    inputContainer.classList.add('name')
     displayFirstPlayer.textContent = `${firstPlayer} is player X`
     inputFirstPlayer.value = ''
     current.textContent = firstPlayer
@@ -28,7 +31,9 @@ const selectPlayer1 = (e) => {
     label1.remove()
 }
 const selectPlayer2 = (e) => {
+    e.preventDefault()
     secondPlayer = inputSecondPlayer.value
+    inputContainer.classList.add('name-2')
     displaySecondPlayer.textContent = `${secondPlayer} is player O`
     inputSecondPlayer.value = ''
     inputSecondPlayer.remove()
@@ -96,6 +101,12 @@ const checkWin8 = (className, winArr, player) => {
 }
 const selectBox = (e) => {
     const box = e.target
+    //remove event if playername not used
+    if (inputContainer.classList.length !== 3) {
+        box.removeEventListener('click',selectBox)
+        alert('pick player names')
+        location.reload()
+    }
     const className = box.classList[1]
     box.style.backgroundColor = '#fff'
     if (current.textContent === firstPlayer) current.textContent = secondPlayer
@@ -145,7 +156,11 @@ const winnerCheckX = (e) => {
     const answer7 = win7.every((ele) => ele === firstPlayer)
     const answer8 = win8.every((ele) => ele === firstPlayer)
     if (answer1 || answer2 || answer3 || answer4 || answer5 || answer6 || answer7 || answer8) {
-        status.textContent = 'GAME OVER'
+        inputContainer.remove()
+        const img = document.createElement('img')
+        img.setAttribute('src', 'https://scrapbookandcards.com/wp-content/uploads/2017/04/planner-prep-Maggie-Massey-4jpg-2.jpg')
+        imgDiv.append(img)
+        status.textContent = ''
         displayFirstPlayer.textContent = ''
         displaySecondPlayer.textContent = ''
         current.textContent = ''
@@ -176,7 +191,11 @@ const winnerCheckO = (e) => {
     const answer7 = win7.every((ele) => ele === secondPlayer)
     const answer8 = win8.every((ele) => ele === secondPlayer)
     if (answer1 || answer2 || answer3 || answer4 || answer5 || answer6 || answer7 || answer8) {
-        status.textContent = 'GAME OVER'
+        inputContainer.remove()
+        const img = document.createElement('img')
+        img.setAttribute('src', 'https://scrapbookandcards.com/wp-content/uploads/2017/04/planner-prep-Maggie-Massey-4jpg-2.jpg')
+        imgDiv.append(img)
+        status.textContent = ''
         displayFirstPlayer.textContent = ''
         displaySecondPlayer.textContent = ''
         winner.textContent = `${secondPlayer} wins!`
