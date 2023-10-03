@@ -21,8 +21,8 @@ const selectPlayer1 = (e) => {
     firstPlayer = inputFirstPlayer.value
     displayFirstPlayer.textContent = `${firstPlayer} is player X`
     inputFirstPlayer.value = ''
-    nameBtn1.disabled = true
     current.textContent = firstPlayer
+    status.textContent = 'Current player: '
     inputFirstPlayer.remove()
     nameBtn1.remove()
     label1.remove()
@@ -31,7 +31,6 @@ const selectPlayer2 = (e) => {
     secondPlayer = inputSecondPlayer.value
     displaySecondPlayer.textContent = `${secondPlayer} is player O`
     inputSecondPlayer.value = ''
-    nameBtn2.disabled = true
     inputSecondPlayer.remove()
     nameBtn2.remove()
     label2.remove()
@@ -149,15 +148,19 @@ const winnerCheckX = (e) => {
         status.textContent = 'GAME OVER'
         displayFirstPlayer.textContent = ''
         displaySecondPlayer.textContent = ''
+        current.textContent = ''
         winner.textContent = `${firstPlayer} wins!`
         boxes.forEach((box) => {
             box.removeEventListener('click', selectBox)
         })
     }
     if (checkTie()) {
-        status.textContent = 'It\'s a tie, no winner!'
+        status.textContent = ''
         displayFirstPlayer.textContent = ''
         displaySecondPlayer.textContent = ''
+        current.textContent = ''
+        winner.style.color = 'red'
+        winner.textContent = 'It\'s a tie, no winner!'
         boxes.forEach((box) => {
             box.removeEventListener('click', selectBox)
         })
@@ -177,6 +180,7 @@ const winnerCheckO = (e) => {
         displayFirstPlayer.textContent = ''
         displaySecondPlayer.textContent = ''
         winner.textContent = `${secondPlayer} wins!`
+        current.textContent = ''
         boxes.forEach((box) => {
             box.removeEventListener('click', selectBox)
         })

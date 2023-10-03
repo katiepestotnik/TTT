@@ -9,12 +9,18 @@
 </head>
 <body>
     <h1>Tic Tac Toe</h1>
-    <span id="label-1">Player X:</span><input class='input-x'type="text" placeholder="name"><button class="name-btn-1">ENTER</button><br>
-    <span id="label-2">Player O:</span><input class='input-o'type="text" placeholder="name"><button class="name-btn-2">ENTER</button>
-    <h3 class="display-p1"></h3>
-    <h3 class="display-p2"></h3>
-    <h4><span class="winner"></span></h4>
-    <h5 class="status">Current Player:<span class="current-player"></span> </h5>
+    <div><span class="winner"></span></div>
+    <div class="input-container">
+        <span id="label-1">Player X:</span><input class='input-x input'type="text" placeholder="name"><button class="name-btn-1 btn">ENTER</button><br>
+        <span id="label-2">Player O:</span><input class='input-o input'type="text" placeholder="name"><button class="name-btn-2 btn">ENTER</button>
+    </div>
+    <div class="display-p1"></div>
+    <div class="display-p2"></div>
+    <div class="player-container">
+        <div class="status"></div>
+        <div class="current-player"></div> 
+    </div>
+
     <div class="container">
         <div class="box one"></div>
         <div class="box two"></div>
