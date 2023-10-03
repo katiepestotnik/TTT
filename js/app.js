@@ -4,6 +4,8 @@ const displayFirstPlayer = document.querySelector('.display-p1')
 const displaySecondPlayer = document.querySelector('.display-p2')
 let firstPlayer
 let secondPlayer
+const label1 = document.querySelector('#label-1')
+const label2 = document.querySelector('#label-2')
 const nameBtn1 = document.querySelector('.name-btn-1')
 const nameBtn2 = document.querySelector('.name-btn-2')
 let firstCount = 0
@@ -21,12 +23,18 @@ const selectPlayer1 = (e) => {
     inputFirstPlayer.value = ''
     nameBtn1.disabled = true
     current.textContent = firstPlayer
+    inputFirstPlayer.remove()
+    nameBtn1.remove()
+    label1.remove()
 }
 const selectPlayer2 = (e) => {
     secondPlayer = inputSecondPlayer.value
     displaySecondPlayer.textContent = `${secondPlayer} is player O`
     inputSecondPlayer.value = ''
     nameBtn2.disabled = true
+    inputSecondPlayer.remove()
+    nameBtn2.remove()
+    label2.remove()
 }
 nameBtn1.addEventListener('click', selectPlayer1)
 nameBtn2.addEventListener('click', selectPlayer2)
@@ -94,6 +102,7 @@ const selectBox = (e) => {
     if (current.textContent === firstPlayer) current.textContent = secondPlayer
     else current.textContent = firstPlayer
     if (firstCount <= secondCount || firstCount === 0) {
+        box.classList.add('guessed')
         box.textContent = 'X'
         firstCount++
         checkWin1(className, win1, firstPlayer)
@@ -107,6 +116,7 @@ const selectBox = (e) => {
         box.removeEventListener('click', selectBox)
     } 
     else {
+        box.classList.add('guessed')
         box.textContent = 'O'
         secondCount++
         checkWin1(className, win1, secondPlayer)
@@ -119,6 +129,11 @@ const selectBox = (e) => {
         checkWin8(className, win8, secondPlayer)
         box.removeEventListener('click', selectBox)
     } 
+}
+
+const checkTie = () => {
+    const newBoxes = Array.from(boxes)
+    return newBoxes.every((ele)=>ele.classList[2] === 'guessed')
 }
 
 const winnerCheckX = (e) => {
@@ -135,6 +150,14 @@ const winnerCheckX = (e) => {
         displayFirstPlayer.textContent = ''
         displaySecondPlayer.textContent = ''
         winner.textContent = `${firstPlayer} wins!`
+        boxes.forEach((box) => {
+            box.removeEventListener('click', selectBox)
+        })
+    }
+    if (checkTie()) {
+        status.textContent = 'It\'s a tie, no winner!'
+        displayFirstPlayer.textContent = ''
+        displaySecondPlayer.textContent = ''
         boxes.forEach((box) => {
             box.removeEventListener('click', selectBox)
         })
